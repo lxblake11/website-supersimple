@@ -1,0 +1,45 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+    font-family: 'Poppins', sans-serif;
+}
+
+header {
+height: 15vh;
+background-color: green;
+display: grid; 
+place-content: center;
+font-size: 2rem;
+font-weight: bold;
+color: white;
+}
+
+.main-content {
+    height: 75vh;
+    background-color: pink;
+    display: grid; 
+    place-content: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+
+
+}
+
+footer {
+    height: 10vh;
+    background-color: blue  ;
+    display: grid; 
+    place-content: center;
+    font-size: 2rem;
+    font-weight: bold;
+    color: white;
+
+
+}
+
