@@ -28,6 +28,9 @@ header {
   font-weight: bold;
   color: white;
 }
+.main-content form {
+  color: black;
+}
 
 footer {
   height: 10vh;
