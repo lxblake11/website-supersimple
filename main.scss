@@ -28,8 +28,29 @@ color: white;
     font-weight: bold;
     color: white;
 
-    form {
+    #emailCaptureForm {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        background-color: white;
+        padding: 2rem;
         color: black;
+        width: 40vw;
+
+        input {
+            padding: 1rem;
+        }
+
+        button {
+            padding: 1rem;
+            align-self: center;
+            width: 20%;
+            background-color: green;
+            border: none;
+            cursor: pointer;
+            color: white;
+            font-weight: bold;
+        }
     }
 
 
