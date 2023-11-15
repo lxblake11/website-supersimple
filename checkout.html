@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <header>
+        <div class="logo">logo</div>
+        <ul class="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+            <li><a href="subscriptions.html">Subscriptions</a></li>
+        </ul>
+    </header>
+
+    <div class="checkout-summary">
+        <h1>Checkout</h1>
+        <div id="orderSummary"></div>
+        <form id="checkoutForm">
+            <div class="form-group">
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" name="firstName" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <button type="submit" id="checkoutButton">Checkout</button>
+        </form>
+    </div>
+
+    <script>
+     document.getElementById('checkoutForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+  const firstName = document.getElementById('firstName').value;
+  const email = document.getElementById('email').value;
+  const selectedSubscription = JSON.parse(localStorage.getItem('selectedSubscription'));
+  
+  if (!selectedSubscription) {
+    alert('No subscription selected. Please go back and select a plan.');
+    return;
+  }
+
+  fetch('/purchase', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      firstName,
+      email,
+      subscriptionTier: selectedSubscription.tier,
+      price: selectedSubscription.price
+    })
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Network response was not ok.');
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log(data.message); // Log the success message
+    window.location.href = 'success.html'; // Redirect on success
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+});
+    </script>
+
+    
+</body>
+</html>

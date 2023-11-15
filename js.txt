@@ -1,0 +1,15 @@
+checkout js original
+
+  <script>
+            document.addEventListener('DOMContentLoaded', function() {
+              // Load the selected subscription details
+              const selectedSubscription = JSON.parse(localStorage.getItem('selectedSubscription'));
+              if (selectedSubscription) {
+                document.getElementById('orderSummary').innerHTML = `
+                  <h2>Your Plan: ${selectedSubscription.tier}</h2>
+                  <p>Price: ${selectedSubscription.price}</p>`;
+              } else {
+                document.getElementById('orderSummary').textContent = 'No subscription selected.';
+              }
+            });
+</script>

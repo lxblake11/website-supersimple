@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscriptions</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="subscriptions.css">
+</head>
+<body>
+    <header>
+        <div class="logo">logo</div>
+        <ul class="nav-menu">
+         <li><a href="index.html">Home</a></li>
+         <li><a href="#">About Us</a></li>
+         <li><a href="subscriptions.html">Subscriptions</a></li>
+        </ul>
+     </header>
+     <div class="subscriptions">
+        <div class="box">
+            <div class="top">
+                <h2>Beginner</h2>
+                <h3>$10 / month</h3>
+            </div>
+            <div class="bottom">
+                <ul>
+                    <li>Access to beginner-friendly content covering HTML, CSS, JavaScript, and basic web development.</li>
+                    <li>Interactive coding exercises and quizzes to reinforce learning.</li>
+                    <li>Monthly newsletter with resources, tips, and community highlights.</li>
+                </ul>
+                <button onclick="addSubscriptionToCart('Beginner', '10')">Add to Cart</button>
+            </div>
+        </div>
+        <div class="box">
+            <div class="top">
+                <h2>Intermediate</h2>
+                <h3>$30 / month</h3>
+            </div>
+            <div class="bottom">
+                <ul>
+                    <li>Includes everything in the Beginner Tier.</li>
+                    <li>Extended library with intermediate to advanced courses on Python, Ruby, and Full-stack development.</li>
+                    <li>Participation in live coding workshops and webinars for deeper learning.</li>
+                    <li>Code reviews and feedback on personal projects.</li>
+                </ul>
+                <button onclick="addSubscriptionToCart('Intermediate', '30')">Add to Cart</button>
+            </div>
+        </div>
+        <div class="box">
+            <div class="top">
+                <h2>Pro</h2>
+                <h3>$60 / month</h3>
+            </div>
+            <div class="bottom">
+                <ul>
+                    <li>Includes everything in the Intermediate Tier.</li>
+                    <li>Advanced topics such as DevOps, Cloud Services, CI/CD pipelines, and Data Structures & Algorithms.</li>
+                    <li>One-on-one mentorship sessions and personalized career guidance.</li>
+                    <li>Exclusive access to job boards, career services, and networking events.</li>
+                </ul>
+                <button onclick="addSubscriptionToCart('Pro', '60')">Add to Cart</button>
+            </div>
+        </div>
+     </div>
+
+     <script>
+      function addSubscriptionToCart(tier, price) {
+  const priceAsNumber = parseInt(price.replace(/[^0-9]/g, ''), 10);
+  localStorage.setItem('selectedSubscription', JSON.stringify({ tier, price: priceAsNumber }));
+  window.location.href = 'checkout.html';
+}
+
+      document.querySelectorAll('.box button').forEach((button, index) => {
+          button.onclick = () => {
+              const tier = button.closest('.box').querySelector('.top h2').textContent;
+              const price = button.closest('.box').querySelector('.top h3').textContent.replace(/[^0-9]/g, ''); // Remove non-numeric chars for price
+              addSubscriptionToCart(tier, price);
+          };
+      });
+  </script>
+</body>
+</html>

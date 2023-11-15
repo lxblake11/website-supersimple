@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscriptions</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="subscriptions.css">
+</head>
+<body>
+    <header>
+        <div class="logo">logo</div>
+        <ul class="nav-menu">
+         <li><a href="index.html">Home</a></li>
+         <li><a href="#">About Us</a></li>
+         <li><a href="subscriptions.html">Subscriptions</a></li>
+        </ul>
+     </header>
+     <div class="subscriptions">
+        <div class="box">
+            <div class="top">
+                <h2>Beginner</h2>
+                <h3>$10 / month</h3>
+            </div>
+            <div class="bottom">
+                <ul>
+                    <li>Access to beginner-friendly content covering HTML, CSS, JavaScript, and basic web development.</li>
+                    <li>Interactive coding exercises and quizzes to reinforce learning.</li>
+                    <li>Monthly newsletter with resources, tips, and community highlights.</li>
+                </ul>
+                <button>Add to Cart</button>
+            </div>
+        </div>
+        <div class="box">
+            <div class="top">
+                <h2>Intermediate</h2>
+                <h3>$30 / month</h3>
+            </div>
+            <div class="bottom">
+            <ul>
+                <li>Includes everything in the Beginner Tier.</li>
+                <li>Extended library with intermediate to advanced courses on Python, Ruby, and Full-stack development.</li>
+                <li>Participation in live coding workshops and webinars for deeper learning.</li>
+                <li>Code reviews and feedback on personal projects.</li>
+            </ul>
+            <button>Add to Cart</button>
+        </div>
+        </div>
+        <div class="box">
+           <div class="top">
+                <h2>Intermediate</h2>
+                <h3>$60 / month</h3>
+            </div>
+            <div class="bottom">
+                <ul>
+                    <li>Includes everything in the Intermediate Tier.</li>
+                    <li>Advanced topics such as DevOps, Cloud Services, CI/CD pipelines, and Data Structures & Algorithms.</li>
+                    <li>One-on-one mentorship sessions and personalized career guidance.</li>
+                    <li>Exclusive access to job boards, career services, and networking events.</li>
+                </ul>
+                <button>Add to Cart</button>
+            </div>
+        </div>
+     </div>
+
+     <!-- <script>
+
+        // Object to hold the subscription details
+        const subscriptions = {
+          'Beginner': { tier: 'Beginner', price: '$10 / month' },
+          'Intermediate': { tier: 'Intermediate', price: '$30 / month' },
+          'Advanced': { tier: 'Advanced', price: '$60 / month' }
+        };
+      
+        // Function to add subscription to cart
+        function addToCart(tier) {
+          // Storing the selected subscription in localStorage
+          localStorage.setItem('selectedSubscription', JSON.stringify(subscriptions[tier]));
+          // Redirecting to the checkout page
+          window.location.href = 'checkout.html';
+        }
+      
+        // Attach the addToCart function to the 'Add to Cart' buttons
+        document.addEventListener('DOMContentLoaded', () => {
+          const buttons = document.querySelectorAll('.box button');
+          buttons.forEach((button, index) => {
+            // Assuming the order of buttons matches the tiers: Beginner, Intermediate, Advanced
+            const tier = ['Beginner', 'Intermediate', 'Advanced'][index];
+            button.addEventListener('click', () => addToCart(tier));
+          });
+        });
+      </script> -->
+      <script>
+        // Simple function to add subscription to cart and redirect to checkout
+        function addSubscriptionToCart(tier, price) {
+          localStorage.setItem('selectedSubscription', JSON.stringify({ tier, price }));
+          window.location.href = 'checkout.html'; // redirect to the checkout page
+        }
+      
+        // Event listeners for the 'Add to Cart' buttons
+        document.querySelectorAll('.box button').forEach((button, index) => {
+          button.onclick = () => {
+            const tier = button.closest('.box').querySelector('.top h2').textContent;
+            const price = button.closest('.box').querySelector('.top h3').textContent;
+            addSubscriptionToCart(tier, price); // add subscription details to cart
+          };
+        });
+      </script>
+</body>
+</html>

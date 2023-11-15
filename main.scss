@@ -10,13 +10,37 @@ html {
 }
 
 header {
-height: 15vh;
+height: 10vh;
 background-color: orange;
-display: grid; 
-place-content: center;
+display: flex;
+align-items: center;
+justify-content: space-between;
+padding: 2rem;
 font-size: 2rem;
-font-weight: bold;
 color: white;
+padding: 0 16.5rem;
+
+.logo {
+    font-weight: bold;
+}
+
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+
+    li a {
+        text-decoration: none;
+        padding-bottom: 1rem;
+        
+    }
+    li a:hover {
+        border-bottom: 3px solid white;
+    
+
+    }
+}
 }
 
 .main-content {

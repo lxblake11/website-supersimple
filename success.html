@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <header>
+        <div class="logo">logo</div>
+        <ul class="nav-menu">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About Us</a></li>
+            <li><a href="subscriptions.html">Subscriptions</a></li>
+        </ul>
+    </header>
+
+    <div class="success-message">
+        <h1>Success!</h1>
+        <p>Congratulations, you have successfully purchased your subscription <span id="subscriptionName"></span>. Login information has been sent to your email.</p>
+    </div>
+
+    <!-- You might want to include a link back to the homepage or user dashboard here -->
+    <a href="index.html" class="button">Go to Homepage</a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          // Retrieve the order details from localStorage
+          const orderDetails = JSON.parse(localStorage.getItem('orderDetails'));
+          if (orderDetails && orderDetails.tier) {
+            // Update the success message with the subscription name
+            document.getElementById('subscriptionName').textContent = `(${orderDetails.tier})`;
+          }
+        });
+      </script>
+</body>
+</html>
